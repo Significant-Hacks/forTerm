@@ -1,0 +1,67 @@
+# Evolution of the Predict Multiplier Script
+
+## Introduction
+The purpose of the Predict Multiplier script is to predict the multiplier for a given SHA256 hash in the Haraka crash game. The script aims to provide accurate predictions based on historical data and specific patterns identified in the hash structure. The evolution of this script has been driven by user feedback and the need for improved accuracy in predictions.
+
+## Version 1.0
+### Description
+The initial implementation of the script included basic color prediction logic and a simple multiplier prediction based on predefined mappings. The script was structured to read historical data from a CSV file and make predictions based on the first character of the SHA256 hash.
+
+### Logic of Version 1.0
+1. **Loading Data**: The script loads historical records from a CSV file containing multipliers and their corresponding SHA256 hashes.
+2. **Color Prediction**: The script checks if the hash starts with specific characters to determine if the predicted color is "Red" or "Green".
+3. **Multiplier Prediction**: 
+   - For "Red" hashes, it uses a predefined mapping to assign a multiplier.
+   - For "Green" hashes, it attempts to find a multiplier based on the first character of the hash.
+4. **Output**: The script outputs the predicted color and multiplier based on the logic defined.
+
+### Defects Identified
+- The script often returned a default multiplier of 1.50, regardless of the actual hash structure.
+- Color predictions were not consistently accurate, leading to confusion in the output.
+
+### Suggested Improvements
+- Refine the multiplier prediction logic to incorporate user-defined patterns and trends.
+- Enhance the handling of historical data to improve accuracy.
+
+## Version 1.1
+### Changes Made
+Based on user feedback, the script was updated to include more sophisticated prediction logic. The user provided specific rules for predicting multipliers based on the structure of the SHA256 hash.
+
+### Logic of Version 1.1
+1. **Enhanced Color Prediction**: The logic was refined to better determine the color based on the first few characters of the hash.
+2. **Improved Multiplier Prediction**: 
+   - The script now considers multiple character prefixes (1, 2, and 3 characters) to predict the multiplier more accurately.
+   - It uses historical data to find the average multiplier for hashes starting with the same character.
+3. **User Feedback Logging**: The script was modified to log user feedback on predictions, allowing for performance tracking.
+
+### Improvements Found
+- The script showed better handling of multipliers, especially for values greater than 10.
+- The accuracy calculation was implemented, providing insights into the performance of the predictions.
+
+### Remaining Issues
+- The color prediction logic became less accurate, with instances of predicting "Green" while the multiplier was below 1.50.
+- The script still struggled with predicting multipliers accurately for certain ranges.
+
+### User Feedback
+Users appreciated the improvements but noted that the color predictions were still inconsistent.
+
+## Version 1.2
+### Current State
+The script has been further refined to include user feedback on predictions and log the results for analysis. It now calculates accuracy based on user input.
+
+### Logic of Version 1.2
+1. **User Feedback Integration**: After each prediction, the script prompts the user for feedback on the predicted color and multiplier.
+2. **Logging Feedback**: The script logs the hash, predicted color, predicted multiplier, and the correct multiplier provided by the user into a text file.
+3. **Accuracy Calculation**: The script calculates the accuracy of predictions based on user feedback, providing a percentage that reflects the performance of the predictions.
+
+### Feedback Received
+- Users reported that while the multiplier predictions improved, there were still inaccuracies in color predictions.
+- The script consistently predicted a multiplier of 1.00 for certain hashes, even when the actual multiplier was higher.
+
+### Suggestions for Future Improvements
+- Implement a more detailed analysis of multipliers in the ranges of 15-20, 20-25, and above, to enhance prediction accuracy.
+- Adjust the logic to ensure that if a multiplier is above 1.50, the output reflects this accurately, even if the predicted color is "Green."
+- Include the accuracy of predictions in the logged feedback for each entry.
+
+## Conclusion
+The Predict Multiplier script has evolved significantly through its versions, with each iteration addressing specific user feedback and improving functionality. The path forward includes further refinements to enhance accuracy and user experience. The insights gained from user feedback and performance analysis will guide future developments to achieve a higher accuracy rate in predictions.
